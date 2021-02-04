@@ -15,7 +15,7 @@
        two or more network call in parallel, but you need to wait for the answers before computing
        the output.
  
-  - **Note** If you use async and do not wait for the result, it will work exactly the same as launch.
-  - **Note** While using this template, there's no need to use async, because we are using Callbacks.
-  - **Note** When using 'withContext' tasks are executed in a serial manner, but with 'async & wait'
+  -  If you use async and do not wait for the result, it will work exactly the same as launch.
+  -  While using this template, there's no need to use async, because we are using Callbacks.
+  -  When using 'withContext' tasks are executed in a serial manner, but with 'async & wait'
        tasks run in parallel.
