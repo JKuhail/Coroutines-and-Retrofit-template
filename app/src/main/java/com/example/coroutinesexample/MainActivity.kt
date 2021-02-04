@@ -2,7 +2,6 @@ package com.example.coroutinesexample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import retrofit2.HttpException
@@ -18,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         text = findViewById(R.id.text)
 
 
-        ApiRequest().getData(object : CallBackTest<List<Post>?> {
+        ApiRequests().getPosts(object : Result<List<Post>?> {
             override fun onSuccess(t: List<Post>?) {
                 text.text = t?.get(0)?.title ?: "null"
                 Toast.makeText(

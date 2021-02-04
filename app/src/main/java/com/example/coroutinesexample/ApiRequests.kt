@@ -28,12 +28,12 @@ import retrofit2.HttpException
  *
  */
 
-class ApiRequest {
-
+class ApiRequests {
 
     private val service: RetrofitService = RetrofitClient.makeRetrofitService()
 
-    fun getData(@Nullable callBackTest: CallBackTest<List<Post>?>): Job {
+    // getPosts Request.
+    fun getPosts(@Nullable result: Result<List<Post>?>): Job {
         return CoroutineScope(Dispatchers.IO).launch {
 
             val response = service.getPosts()
@@ -42,12 +42,12 @@ class ApiRequest {
                 try {
                     if (response.isSuccessful) {
                         //Do something with response e.g show to the UI.
-                        callBackTest.onSuccess(response.body())
+                        result.onSuccess(response.body())
                     } else {
-                        callBackTest.onFailure("Something wrong!")
+                        result.onFailure("Something wrong!")
                     }
                 } catch (e: HttpException) {
-                    callBackTest.onException(e)
+                    result.onException(e)
                 }
             }
 
